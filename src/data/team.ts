@@ -8,16 +8,16 @@ export interface Founder {
 
 export const FOUNDERS: Founder[] = [
   {
-    id: 1, name: "Founder A", normal: "/path/to/normal1.png", silly: "/path/to/silly1.png",
-    bio: "Passionate about C++ and matcha."
+    id: 1, name: "Isabella Laine", normal: "src/assets/founders/izzy-reg.jpg", silly: "src/assets/founders/izzy-silly.png",
+    bio: "filler bio."
   },
   {
-    id: 2, name: "Founder B", normal: "/path/to/normal2.png", silly: "/path/to/silly2.png",
-    bio: "Subteam lead of Imaging Systems."
+    id: 2, name: "Katherine Wei", normal: "src/assets/founders/kat-reg.jpg", silly: "src/assets/founders/kat-silly.jpg",
+    bio: "filler bio"
   },
   {
-    id: 3, name: "Founder C", normal: "/path/to/normal3.png", silly: "/path/to/silly3.png",
-    bio: "Subteam lead of Imaging Systems."
+    id: 3, name: "Eman Siddiqui", normal: "src/assets/founders/eman-reg.jpg", silly: "src/assets/founders/eman-silly.jpg",
+    bio: "filler bio."
   },
   {
     id: 4, name: "Jennifer Ai", normal: "src/assets/founders/jennifer-reg.jpg", silly: "src/assets/founders/jennifer-silly.JPG",
@@ -45,7 +45,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "President",
     bio: "put ur bio here",
     image: "src/assets/team/izzy-reg.jpg",
-    funImage: "src/assets/team/izzy-silly.jpg"
+    funImage: "src/assets/team/izzy-silly.png"
   },
   {
     id: 2,
