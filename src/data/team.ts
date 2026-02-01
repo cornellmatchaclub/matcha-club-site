@@ -23,7 +23,7 @@ export const FOUNDERS: Founder[] = [
   },
   {
     id: 4, name: "Jennifer Ai", normal: "/assets/founders/jennifer-reg.jpg", silly: "/assets/founders/jennifer-silly.jpg",
-    bio: "insert bio here"
+    bio: "I’m a Senior in Duffield Engineering, majoring in Information Science, Systems, and Technology. I’m from Texas, but my favorite matcha has to be either from Community Goods in LA or Kijitora in NYC. Also, former Co-President of WICC!!"
   },
   {
     id: 5, name: "Sophia Wang", normal: "/assets/founders/sophia-reg.jpg", silly: "/assets/founders/sophia-silly.jpg",
@@ -53,7 +53,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     id: 2,
     name: "Jennifer Ai",
     role: "President",
-    bio: "put ur bio here",
+    bio: "I’m a Senior in Duffield Engineering, majoring in Information Science, Systems, and Technology. I’m from Texas, but my favorite matcha has to be either from Community Goods in LA or Kijitora in NYC. Also, former Co-President of WICC!!",
     image: "/assets/team/jennifer-reg.jpg",
     funImage: "/assets/team/jennifer-silly.jpg"
   },
