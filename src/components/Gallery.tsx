@@ -8,6 +8,7 @@ interface BasicPageProps {
 // Auto-import all images from the gallery folder
 const imageModules = import.meta.glob('../assets/gallery/*.{png,jpg,JPG,PNG,jpeg,webp,JPEG,HEIC}', { eager: true });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const IMAGES = Object.values(imageModules).map((module: any, index) => ({
   id: index,
   src: module.default,

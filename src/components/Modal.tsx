@@ -28,7 +28,6 @@ const Modal: React.FC<ModalProps> = ({ children, onClose }) => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        {/* <div className="overflow-y-auto p-8 pt-12"> */}
         <div className="overflow-y-auto p-8 pt-12 w-full flex-1 flex flex-col">
           {children}
         </div>

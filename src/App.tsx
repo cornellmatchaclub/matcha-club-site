@@ -5,7 +5,6 @@ import Modal from './components/Modal';
 import RecipeContent from './components/RecipeContent';
 import EventContent from './components/EventContent';
 import HistoryContent from './components/HistoryContent';
-import BasicPage from './components/BasicPage';
 import type { ModalType, ViewType } from './types';
 import logoImg from './assets/matcha-club-logo.png';
 import AboutContent from './components/AboutContent';
@@ -89,7 +88,6 @@ const App: React.FC = () => {
           Cornell Matcha Club
         </h1>
         {currentView === 'shelf' && (
-          // TODO: change font type?
           <p className="text-[#556b2f] tracking-[0.3em] text-[14px] font-semibold animate-in slide-in-from-top-2 duration-700">
             Cultivating community through matcha 🍵
           </p>

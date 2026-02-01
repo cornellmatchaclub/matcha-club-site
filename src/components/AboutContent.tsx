@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import { TEAM_MEMBERS, type TeamMember, FOUNDERS } from '../data/team';
 import Modal from './Modal';
 
-// interface AboutContentProps {
-//   onBack: () => void;
-// }
-
 const AboutContent: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const [isFoundersOpen, setIsFoundersOpen] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedPerson, setSelectedPerson] = useState<any | null>(null);
 
   return (
@@ -37,37 +34,6 @@ const AboutContent: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             desire to find a moment of peace amidst the rigors of campus life. We realized that while coffee keeps us awake, matcha keeps us present. We founded this club to build a sanctuary for students to appreciate the ritual, health benefits, and vibrant community surrounding high-quality stone-ground tea.
           </p>
 
-          {/* Collapsible Founders Section */}
-          {/* <div className="my-4 pt-6 pb-0">
-            <button
-              onClick={() => setIsFoundersOpen(!isFoundersOpen)}
-              className="flex items-center gap-4 text-lg font-bold text-[#2d4030] hover:opacity-70 transition-opacity"
-            >
-              <span>{isFoundersOpen ? '−' : '+'} Meet the Founders</span>
-            </button>
-
-            <div className={`overflow-hidden transition-all duration-500 ${isFoundersOpen ? 'max-h-[1000px] mt-8 opacity-100' : 'max-h-0 opacity-0'}`}>
-              <div className='flex flex-col lg:flex-row'>
-                <div className="lg:w-1/2 w-[50%] aspect-video rounded-3xl overflow-hidden shadow-md border-4 border-white group relative">
-                  <img
-                    src="src/assets/founders/iskej.JPG"
-                    alt="Matcha Club Founders!"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                </div>
-                <div className="lg:w-1/2 flex flex-wrap gap-8 justify-center md:justify-start pb-4 ml-10">
-                  {FOUNDERS.map((person) => (
-                    <div>
-                      <FounderImage key={person.id} person={person} onClick={() => setSelectedPerson(person)} />
-                      <p className="mt-3 text-center text-[14px] font-bold text-[#2d4030]">{person.name}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <p className="text-left text-[14px] text-gray-600 mt-4 ml-2">The five founders of the Cornell Matcha Club</p>
-            </div>
-          </div> */}
           {/* Collapsible Founders Section */}
           <div className="my-4 pt-6 pb-0">
             <button
@@ -109,36 +75,6 @@ const AboutContent: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             </div>
           </div>
         </section>
-
-        {/* NEW SIDE-BY-SIDE SECTION: Origin (Left) and Founders (Right) */}
-        {/* <div className="flex flex-col lg:flex-row gap-12 items-start mb-24"> */}
-
-        {/* Left Side: Origin (approx 1/3) */}
-        {/* <section className="lg:w-1/2 bg-white/40 backdrop-blur-sm p-8 rounded-3xl border border-[#2d4030]/5 shadow-sm">
-            <h3 className="text-2xl font-bold text-[#2d4030] mb-6">Our Origin</h3>
-            <p className="text-gray-700 text-[16px] leading-relaxed">
-              We founded the Cornell Matcha Club out of a shared love of matcha but also a desire to connect students together.
-              The five of us met through a chance desire to find a moment of peace amidst the rigors of campus life.
-              <br /><br />
-              We realized that while coffee keeps us awake, matcha keeps us present. We founded this club to build a sanctuary for students to appreciate the ritual, health benefits, and vibrant community surrounding high-quality stone-ground tea.
-            </p>
-          </section> */}
-
-        {/* Right Side: Founders (approx 2/3) */}
-        {/* <section className="lg:w-1/3 pl-0 lg:pl-8">
-            <h3 className="text-2xl font-bold text-[#2d4030] mb-8 flex items-center gap-3">
-              Meet the Founders
-            </h3>
-            <div className="flex flex-wrap gap-x-10 gap-y-12 justify-center lg:justify-start">
-              {FOUNDERS.map((person) => (
-                <div key={person.id} className="flex flex-col items-center">
-                  <FounderImage person={person} onClick={() => setSelectedPerson(person)} />
-                  <p className="mt-4 text-center text-[13px] font-bold text-[#2d4030] uppercase tracking-wider">{person.name}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div> */}
 
         {/* Current E-Board Section */}
         <section className="max-w-[1400px] mx-auto mb-8 pb-10 border-b border-[#2d4030]/10">
@@ -185,6 +121,7 @@ const AboutContent: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 };
 
 // Fun Hover/Silly Picture Component
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const FounderImage: React.FC<{ person: any, onClick: () => void }> = ({ person, onClick }) => (
   <div onClick={onClick} className="relative w-28 h-28 md:w-32 md:h-32 cursor-pointer group">
     <div className="absolute inset-0 rounded-full overflow-hidden border-2 border-[#8bc34a]/20 transition-all duration-500 group-hover:scale-105 shadow-md">

@@ -7,9 +7,6 @@ const RecipeContent: React.FC = () => {
     <div className="space-y-8 animate-in fade-in duration-700">
       <div className="text-center">
         <h2 className="text-4xl font-bold text-[#2d4030] soft-font tracking-tight mb-2">{RECIPE.title}</h2>
-        {/* <span className="bg-[#f1f8e9] text-[#556b2f] px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase">
-          {RECIPE.difficulty} Level
-        </span> */}
       </div>
 
       <div className="grid md:grid-cols-2 gap-10">

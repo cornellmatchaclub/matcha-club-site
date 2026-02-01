@@ -23,7 +23,6 @@ const EventContent: React.FC<EventContentProps> = ({ onBack }) => {
 
       <div className="text-center space-y-4">
         <h2 className="text-5xl font-bold text-[#2d4030] soft-font tracking-tight">Past Events</h2>
-        {/* <p className="text-[#556b2f] opacity-50 text-xs md:text-sm font-bold uppercase tracking-[0.4em] soft-font">Moments & Gatherings</p> */}
       </div>
 
       <div className="space-y-24">
@@ -40,10 +39,6 @@ const EventContent: React.FC<EventContentProps> = ({ onBack }) => {
               <span className="text-[#8bc34a] text-[10px] font-bold uppercase tracking-[0.3em] soft-font">{event.date}</span>
               <h3 className="text-3xl font-semibold text-[#2d4030] soft-font tracking-tight">{event.title}</h3>
               <p className="text-gray-500 text-base leading-relaxed font-light">{event.description}</p>
-              {/* <div className="pt-4 flex items-center gap-3">
-                <div className="h-[1px] w-8 bg-[#2d4030]/20"></div>
-                <span className="text-[10px] text-[#556b2f] opacity-40 font-bold tracking-widest uppercase">Details</span>
-              </div> */}
             </div>
           </div>
         ))}
