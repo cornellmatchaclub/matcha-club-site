@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# Cornell Matcha Club Website Maintenance Guide
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This guide is split into two sections: one for club members who want to update the site directly on GitHub without touching any code, and one for developers looking to run the project locally.
 
-Currently, two official plugins are available:
+## 🍵 For Club Members (Non-Coders)
+You can update almost everything on the website directly through the GitHub website. No special software is required!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**1. Adding or Removing Photos**
+  - All images are stored in the `public/assets/` folder, except for gallery photos, which are in `src/assets/gallery`.
+  - Navigate to the `public/assets/` folder in this repository.
+  - Open the specific sub-folder (e.g., `team/`, `founders/`, `events/`, or `gallery/`).
+  - **To Add:** Click Add file -> Upload files. Drag your photo in.
+  - **Important**: Ensure the filename has no spaces (e.g., use izzy-matcha.jpg instead of izzy matcha.jpg), also PLS use .jpg (not .JPG or .png).
+  - **To Remove:** Click on the file you want to delete and click the trash can icon.
+  - Click Commit changes at the bottom to save.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+**2. Updating the Current E-Board (`team.ts`)**
+  - To change names, roles, or bios for the leadership team:
+  - Go to `src/data/team.ts`.
+  - Click the pencil icon (Edit this file).
+  - Find the `TEAM_MEMBERS` section. Each person looks like this:
+    ```
+    {
+      id: 1,
+      name: "Name",
+      role: "Role",
+      bio: "Your bio here",
+      image: "/assets/team/your-photo.jpg",
+      funImage: "/assets/team/your-silly-photo.jpg"
     },
-  },
-])
-```
+    ```
+  - Edit the text between the quotes. Make sure the image path matches the filename you uploaded to the public/assets/team/ folder exactly.
+  - Also make sure there is a comma between each section {...}, {...}, {...} (but don't have a comma at the end).
+  - Click Commit changes.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**3. Adding New Events (`events.ts`)**
+  - Go to `src/data/events.ts`.
+  - Click the pencil icon.
+  - Add a new block at the top of the `EVENTS` list:
+    ```
+    {
+      id: "7",
+      title: "Event Name",
+      date: "Month Day, Year",
+      description: "A short blurb about what happened!",
+      image: "/assets/events/your-event-photo.jpg"
+    }
+    ```
+  - Click Commit changes.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Note:** Once you save your changes, the website will automatically update and redeploy within 2-3 minutes!
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# 💻 For Developers
+This project is a modern web application built with React, TypeScript, Vite, and Tailwind CSS. [If you don't know how to code, please refer to instructions above, or create a new branch to test on]
+
+## 🚀 Getting Started
+- Clone the repository:
+  - `git clone https://github.com/cornellmatchaclub/matcha-club-site.git`
+  - `cd matcha-club-site`
+- Install dependencies:
+  - `npm install`
+- Run locally:
+  - `npm run dev`
+- The site will be available at http://localhost:5173.
+
+## 🏗️ Project Architecture
+- `/src/components`: Contains the UI building blocks (Modals, Shelf, Gallery, etc.).
+- `/src/data`: Contains the .ts files that drive the content of the site.
+- `/public/assets`: The storage for all static images.
+- `/src/utils/paths.ts`: Contains a helper function getAssetPath that prepends the base URL to images, ensuring they work on GitHub Pages sub-directories.
+
+## 🚢 Deployment
+- Deployment is fully automated via GitHub Actions.
+- When a push is made to the main branch, the `.github/workflows/deploy.yml` script triggers.
+- It builds the production-ready files and pushes them to the gh-pages branch.
+- **Base URL:** If you change the repository name, you must update the base field in vite.config.ts.
