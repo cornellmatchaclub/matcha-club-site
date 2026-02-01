@@ -6,9 +6,11 @@ export interface Founder {
   name: string;
 }
 
+// READ ME: make sure the paths are 100% CORRECT! JPG vs jpg matters, PNG vs jpg, etc.
+
 export const FOUNDERS: Founder[] = [
   {
-    id: 1, name: "Isabella Laine", normal: "/assets/founders/izzy-reg.jpg", silly: "/assets/founders/izzy-silly.png",
+    id: 1, name: "Isabella Laine", normal: "/assets/founders/izzy-reg.jpg", silly: "/assets/founders/izzy-silly.jpg",
     bio: "filler bio."
   },
   {
@@ -20,7 +22,7 @@ export const FOUNDERS: Founder[] = [
     bio: "filler bio."
   },
   {
-    id: 4, name: "Jennifer Ai", normal: "/assets/founders/jennifer-reg.jpg", silly: "/assets/founders/jennifer-silly.JPG",
+    id: 4, name: "Jennifer Ai", normal: "/assets/founders/jennifer-reg.jpg", silly: "/assets/founders/jennifer-silly.jpg",
     bio: "insert bio here"
   },
   {
@@ -45,7 +47,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     role: "President",
     bio: "put ur bio here",
     image: "/assets/team/izzy-reg.jpg",
-    funImage: "/assets/team/izzy-silly.png"
+    funImage: "/assets/team/izzy-silly.jpg"
   },
   {
     id: 2,

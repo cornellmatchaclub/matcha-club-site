@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { EVENTS } from '../data/events';
+import { getAssetPath } from '../utils/paths';
 
 interface EventContentProps {
   onBack?: () => void;
@@ -30,7 +31,7 @@ const EventContent: React.FC<EventContentProps> = ({ onBack }) => {
           <div key={event.id} className={`flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 group items-center`}>
             <div className="w-full md:w-3/5 overflow-hidden rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-1000 border border-[#8bc34a]/10">
               <img
-                src={event.image}
+                src={getAssetPath(event.image)}
                 alt={event.title}
                 className="w-full aspect-[16/10] object-cover group-hover:scale-105 transition-transform duration-[2000ms] transition-soft"
               />

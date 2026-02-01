@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TEAM_MEMBERS, type TeamMember, FOUNDERS } from '../data/team';
 import Modal from './Modal';
+import { getAssetPath } from '../utils/paths';
 
 const AboutContent: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const [isFoundersOpen, setIsFoundersOpen] = useState(false);
@@ -51,7 +52,7 @@ const AboutContent: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 {/* Group Image: Full width and centered on mobile, half width on Desktop */}
                 <div className="w-full lg:w-1/2 aspect-[3/2] rounded-3xl overflow-hidden shadow-md border-4 border-white group relative">
                   <img
-                    src="/assets/founders/iskej.JPG"
+                    src={getAssetPath("/assets/founders/iskej.jpg")}
                     alt="Matcha Club Founders!"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -92,7 +93,7 @@ const AboutContent: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             <div className="flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left">
               <div className="w-48 h-64 flex-shrink-0 rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src={selectedPerson.image || selectedPerson.normal}
+                  src={getAssetPath(selectedPerson.image || selectedPerson.normal)}
                   className="w-full h-full object-cover"
                   alt={selectedPerson.name}
                 />
@@ -125,8 +126,8 @@ const AboutContent: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 const FounderImage: React.FC<{ person: any, onClick: () => void }> = ({ person, onClick }) => (
   <div onClick={onClick} className="relative w-28 h-28 md:w-32 md:h-32 cursor-pointer group">
     <div className="absolute inset-0 rounded-full overflow-hidden border-2 border-[#8bc34a]/20 transition-all duration-500 group-hover:scale-105 shadow-md">
-      <img src={person.normal} className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
-      <img src={person.silly} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <img src={getAssetPath(person.normal)} className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
+      <img src={getAssetPath(person.silly)} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
     </div>
   </div>
 );
@@ -135,8 +136,8 @@ const TeamCard: React.FC<{ member: TeamMember; onClick: () => void }> = ({ membe
   <div className="flex flex-col group cursor-pointer" onClick={onClick}>
     {/* Smaller Image Container */}
     <div className="relative aspect-[4/5] overflow-hidden rounded-xl mb-4 shadow-sm border border-[#2d4030]/5 transition-transform duration-300 group-hover:-translate-y-1">
-      <img src={member.image} className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:opacity-0 transition-opacity duration-500" />
-      <img src={member.funImage} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <img src={getAssetPath(member.image)} className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:opacity-0 transition-opacity duration-500" />
+      <img src={getAssetPath(member.funImage)} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     </div>
 
     {/* Info remains visible, bio is hidden */}
