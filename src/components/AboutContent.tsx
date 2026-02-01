@@ -51,7 +51,7 @@ const AboutContent: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 {/* Group Image: Full width and centered on mobile, half width on Desktop */}
                 <div className="w-full lg:w-1/2 aspect-[3/2] rounded-3xl overflow-hidden shadow-md border-4 border-white group relative">
                   <img
-                    src="src/assets/founders/iskej.JPG"
+                    src="/assets/founders/iskej.JPG"
                     alt="Matcha Club Founders!"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />

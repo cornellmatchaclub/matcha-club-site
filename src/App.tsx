@@ -6,7 +6,7 @@ import RecipeContent from './components/RecipeContent';
 import EventContent from './components/EventContent';
 import HistoryContent from './components/HistoryContent';
 import type { ModalType, ViewType } from './types';
-import logoImg from './assets/matcha-club-logo.png';
+import logoImg from '/assets/matcha-club-logo.png';
 import AboutContent from './components/AboutContent';
 import Calendar from './components/Calendar';
 import Gallery from './components/Gallery';

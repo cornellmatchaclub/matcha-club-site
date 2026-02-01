@@ -1,12 +1,12 @@
 
 import React from 'react';
-import bowlImg from '../assets/bowl.png';
-import chasenImg from '../assets/chasen.png';
-import matchaTins from '../assets/matcha-tins.png';
-import aboutBook from '../assets/about-book.png';
-import calendarBook from '../assets/calendar-book.png';
-import galleryBook from '../assets/gallery-book.png';
-import instagramBook from '../assets/instagram-book.png';
+import bowlImg from '/assets/bowl.png';
+import chasenImg from '/assets/chasen.png';
+import matchaTins from '/assets/matcha-tins.png';
+import aboutBook from '/assets/about-book.png';
+import calendarBook from '/assets/calendar-book.png';
+import galleryBook from '/assets/gallery-book.png';
+import instagramBook from '/assets/instagram-book.png';
 
 import type { ModalType, ViewType } from '../types';
 
