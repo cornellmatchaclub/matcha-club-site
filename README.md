@@ -7,6 +7,8 @@ You can update almost everything on the website directly through the GitHub webs
 
 **FIRST,** make sure you are logged into the cornellmatchaclub@gmail.com GitHub account (through Google).
 
+**SECOND,** read through this whole thing, and [this supplementary doc](https://docs.google.com/document/d/1jO1oAiOmrxLVR-PmtruDD5jcEOH0vR4oBVFeqmaw0sc/edit?usp=sharing) with images before making any edits.
+
 **1. Adding or Removing Photos**
   - All images are stored in the `public/assets/` folder, except for gallery photos, which are in `src/assets/gallery`.
   - Navigate to the `public/assets/` folder in this repository.
@@ -32,7 +34,7 @@ You can update almost everything on the website directly through the GitHub webs
     },
     ```
   - Edit the text between the quotes. Make sure the image path matches the filename you uploaded to the public/assets/team/ folder exactly.
-  - Also make sure there is a comma between each section {...}, {...}, {...} (but don't have a comma at the end).
+  - Also make sure there is a comma between each section {...}, {...}, {...},
   - Click Commit changes.
 
 **3. Adding New Events (`events.ts`)**
