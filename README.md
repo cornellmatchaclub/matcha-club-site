@@ -5,6 +5,8 @@ This guide is split into two sections: one for club members who want to update t
 ## 🍵 For Club Members (Non-Coders)
 You can update almost everything on the website directly through the GitHub website. No special software is required!
 
+**FIRST,** make sure you are logged into the cornellmatchaclub@gmail.com GitHub account (through Google).
+
 **1. Adding or Removing Photos**
   - All images are stored in the `public/assets/` folder, except for gallery photos, which are in `src/assets/gallery`.
   - Navigate to the `public/assets/` folder in this repository.
