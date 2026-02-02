@@ -122,14 +122,32 @@ const AboutContent: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 };
 
 // Simple Image component with case-check and fade-in
+// const SafeImg: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = ({ className, ...props }) => {
+//   const [loaded, setLoaded] = React.useState(false);
+//   return (
+//     <img
+//       {...props}
+//       onLoad={() => setLoaded(true)}
+//       onError={handleImageError}
+//       className={`${className} transition-all duration-500 ease-in-out ${loaded ? 'opacity-100' : 'opacity-0'}`}
+//     />
+//   );
+// };
 const SafeImg: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = ({ className, ...props }) => {
-  const [loaded, setLoaded] = React.useState(false);
+  const [isReady, setIsReady] = useState(false);
+
   return (
     <img
       {...props}
-      onLoad={() => setLoaded(true)}
+      onLoad={() => setIsReady(true)}
       onError={handleImageError}
-      className={`${className} transition-all duration-500 ease-in-out ${loaded ? 'opacity-100' : 'opacity-0'}`}
+      style={{
+        // Keep it hidden from the layout and render tree until fully buffered
+        visibility: isReady ? 'visible' : 'hidden',
+        // If not ready, force 0. If ready, let Tailwind classes take over.
+        opacity: isReady ? undefined : 0
+      }}
+      className={`${className} transition-opacity duration-700 ease-in-out`}
     />
   );
 };
@@ -138,14 +156,14 @@ const FounderImage: React.FC<{ person: any, onClick: () => void }> = ({ person, 
   <div onClick={onClick} className="relative w-28 h-28 md:w-32 md:h-32 cursor-pointer group">
     <div className="absolute inset-0 rounded-full overflow-hidden border-2 border-[#8bc34a]/20 bg-[#f5f0e1] transition-all duration-700 group-hover:scale-105 shadow-md">
 
-      {/* SILLY IMAGE: Stays in the background, fades in on hover */}
+      {/* SILLY: Loads behind the normal one */}
       <SafeImg
         src={getAssetPath(person.silly)}
-        className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 scale-110 transition-transform duration-500"
+        className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100"
         alt={`${person.name} silly`}
       />
 
-      {/* NORMAL IMAGE: On top, fades out on hover to reveal the silly one */}
+      {/* NORMAL: Fades out on hover to reveal silly */}
       <SafeImg
         src={getAssetPath(person.normal)}
         className="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0"
@@ -154,6 +172,27 @@ const FounderImage: React.FC<{ person: any, onClick: () => void }> = ({ person, 
     </div>
   </div>
 );
+
+// const FounderImage: React.FC<{ person: any, onClick: () => void }> = ({ person, onClick }) => (
+//   <div onClick={onClick} className="relative w-28 h-28 md:w-32 md:h-32 cursor-pointer group">
+//     <div className="absolute inset-0 rounded-full overflow-hidden border-2 border-[#8bc34a]/20 bg-[#f5f0e1] transition-all duration-700 group-hover:scale-105 shadow-md">
+
+//       {/* SILLY IMAGE: Stays in the background, fades in on hover */}
+//       <SafeImg
+//         src={getAssetPath(person.silly)}
+//         className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 scale-110 transition-transform duration-500"
+//         alt={`${person.name} silly`}
+//       />
+
+//       {/* NORMAL IMAGE: On top, fades out on hover to reveal the silly one */}
+//       <SafeImg
+//         src={getAssetPath(person.normal)}
+//         className="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0"
+//         alt={person.name}
+//       />
+//     </div>
+//   </div>
+// );
 
 const TeamCard: React.FC<{ member: TeamMember; onClick: () => void }> = ({ member, onClick }) => (
   <div className="flex flex-col group cursor-pointer" onClick={onClick}>
