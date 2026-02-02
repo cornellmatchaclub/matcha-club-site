@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TEAM_MEMBERS, type TeamMember, FOUNDERS } from '../data/team';
 import Modal from './Modal';
-import { getAssetPath } from '../utils/paths';
+import { getAssetPath, handleImageError } from '../utils/paths';
 
 const AboutContent: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const [isFoundersOpen, setIsFoundersOpen] = useState(false);
@@ -121,32 +121,92 @@ const AboutContent: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   );
 };
 
-// Fun Hover/Silly Picture Component
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// Simple Image component with case-check and fade-in
+const SafeImg: React.FC<React.ImgHTMLAttributes<HTMLImageElement>> = ({ className, ...props }) => {
+  const [loaded, setLoaded] = React.useState(false);
+  return (
+    <img
+      {...props}
+      onLoad={() => setLoaded(true)}
+      onError={handleImageError}
+      className={`${className} transition-all duration-500 ease-in-out ${loaded ? 'opacity-100' : 'opacity-0'}`}
+    />
+  );
+};
+
 const FounderImage: React.FC<{ person: any, onClick: () => void }> = ({ person, onClick }) => (
   <div onClick={onClick} className="relative w-28 h-28 md:w-32 md:h-32 cursor-pointer group">
-    <div className="absolute inset-0 rounded-full overflow-hidden border-2 border-[#8bc34a]/20 transition-all duration-500 group-hover:scale-105 shadow-md">
-      <img src={getAssetPath(person.normal)} className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
-      <img src={getAssetPath(person.silly)} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+    <div className="absolute inset-0 rounded-full overflow-hidden border-2 border-[#8bc34a]/20 bg-[#f5f0e1] transition-all duration-700 group-hover:scale-105 shadow-md">
+
+      {/* SILLY IMAGE: Stays in the background, fades in on hover */}
+      <SafeImg
+        src={getAssetPath(person.silly)}
+        className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 scale-110 transition-transform duration-500"
+        alt={`${person.name} silly`}
+      />
+
+      {/* NORMAL IMAGE: On top, fades out on hover to reveal the silly one */}
+      <SafeImg
+        src={getAssetPath(person.normal)}
+        className="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:opacity-0"
+        alt={person.name}
+      />
     </div>
   </div>
 );
 
 const TeamCard: React.FC<{ member: TeamMember; onClick: () => void }> = ({ member, onClick }) => (
   <div className="flex flex-col group cursor-pointer" onClick={onClick}>
-    {/* Smaller Image Container */}
-    <div className="relative aspect-[4/5] overflow-hidden rounded-xl mb-4 shadow-sm border border-[#2d4030]/5 transition-transform duration-300 group-hover:-translate-y-1">
-      <img src={getAssetPath(member.image)} className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:opacity-0 transition-opacity duration-500" />
-      <img src={getAssetPath(member.funImage)} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+    <div className="relative aspect-[4/5] overflow-hidden rounded-xl mb-4 shadow-sm border border-[#2d4030]/5 bg-[#f5f0e1] transition-all duration-700 group-hover:-translate-y-1">
+
+      {/* FUN IMAGE: Bottom layer */}
+      <SafeImg
+        src={getAssetPath(member.funImage)}
+        className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 scale-100 group-hover:scale-110 transition-all duration-500"
+        alt={`${member.name} fun`}
+      />
+
+      {/* PROFESSIONAL IMAGE: Top layer */}
+      <SafeImg
+        src={getAssetPath(member.image)}
+        className="absolute inset-0 w-full h-full object-cover grayscale-[20%] opacity-100 group-hover:opacity-0 transition-all duration-500"
+        alt={member.name}
+      />
     </div>
 
-    {/* Info remains visible, bio is hidden */}
     <h4 className="text-lg font-bold text-[#2d4030] mb-0.5">{member.name}</h4>
     <p className="text-[#8bc34a] font-bold text-[10px] uppercase tracking-wider">
       {member.role}
     </p>
   </div>
 );
+
+// Fun Hover/Silly Picture Component
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// const FounderImage: React.FC<{ person: any, onClick: () => void }> = ({ person, onClick }) => (
+//   <div onClick={onClick} className="relative w-28 h-28 md:w-32 md:h-32 cursor-pointer group">
+//     <div className="absolute inset-0 rounded-full overflow-hidden border-2 border-[#8bc34a]/20 transition-all duration-500 group-hover:scale-105 shadow-md">
+//       <img src={getAssetPath(person.normal)} className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
+//       <img src={getAssetPath(person.silly)} className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+//     </div>
+//   </div>
+// );
+
+// const TeamCard: React.FC<{ member: TeamMember; onClick: () => void }> = ({ member, onClick }) => (
+//   <div className="flex flex-col group cursor-pointer" onClick={onClick}>
+//     {/* Smaller Image Container */}
+//     <div className="relative aspect-[4/5] overflow-hidden rounded-xl mb-4 shadow-sm border border-[#2d4030]/5 transition-transform duration-300 group-hover:-translate-y-1">
+//       <img src={getAssetPath(member.image)} className="absolute inset-0 w-full h-full object-cover grayscale-[20%] group-hover:opacity-0 transition-opacity duration-500" />
+//       <img src={getAssetPath(member.funImage)} className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+//     </div>
+
+//     {/* Info remains visible, bio is hidden */}
+//     <h4 className="text-lg font-bold text-[#2d4030] mb-0.5">{member.name}</h4>
+//     <p className="text-[#8bc34a] font-bold text-[10px] uppercase tracking-wider">
+//       {member.role}
+//     </p>
+//   </div>
+// );
 
 const FAQItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => (
   <div className="border-b border-[#2d4030]/10 pb-6">
