@@ -266,12 +266,11 @@ const TeamCard: React.FC<{ member: TeamMember; onClick: () => void }> = ({ membe
     </p>
   </div>
 );
-
-const FAQItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => (
-  <div className="border-b border-[#2d4030]/10 pb-6">
-    <h4 className="text-lg font-bold text-[#2d4030] mb-2">{question}</h4>
-    <p className="text-gray-600 leading-relaxed">{answer}</p>
-  </div>
-);
+// const FAQItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => (
+//   <div className="border-b border-[#2d4030]/10 pb-6">
+//     <h4 className="text-lg font-bold text-[#2d4030] mb-2">{question}</h4>
+//     <p className="text-gray-600 leading-relaxed">{answer}</p>
+//   </div>
+// );
 
 export default AboutContent;
