@@ -101,7 +101,7 @@ const App: React.FC = () => {
       <footer className="mt-12 pb-4 text-[#8b4513] text-[12px] text-center tracking-widest">
         <p className='opacity-45'>© 2026 Cornell Matcha Club.</p>
         <p className='normal-case pt-2 md:pt-0 opacity-35'>This organization is a registered student organization of Cornell University.</p>
-        <p className='normal-case pt-2 md:pt-0 opacity-35'>This organization follows <a href="https://hr.cornell.edu/about/workplace-rights/equal-education-and-employment">Cornell's Equal Education and Employment Guidelines</p>
+        <p className='normal-case pt-2 md:pt-0 opacity-35'>This organization follows <a href="https://hr.cornell.edu/about/workplace-rights/equal-education-and-employment">Cornell's Equal Education and Employment Guidelines</a></p>
       </footer>
 
       {activeModal && (
